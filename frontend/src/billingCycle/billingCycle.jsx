@@ -11,12 +11,16 @@ import TabsContent from '../common/tab/tabsContent'
 import TabHeader from '../common/tab/tabHeader'
 import TabContent from '../common/tab/tabContent'
 import {selectTab, showTabs} from '../common/tab/tabActions'
+import {getList} from './billingCycleActions'
+
+import List from '../common/list/list'
 
 class BillingCycle extends Component {
     componentWillMount (){
         const tabsToShow = ['tabList','tabCreate']
         this.props.selectTab(tabsToShow[0])             // Seleciona a tabList como Inicial
-        this.props.showTabs(...tabsToShow) // Seleciona as Tabs que serão exibidas
+        this.props.showTabs(...tabsToShow)              // Seleciona as Tabs que serão exibidas
+        this.props.getList()
     }
 
     render() {
@@ -33,7 +37,9 @@ class BillingCycle extends Component {
                             
                         </TabsHeader>
                         <TabsContent>
-                            <TabContent id='tabList'><h1>Lista</h1></TabContent>
+                            <TabContent id='tabList'>
+                                <List/>
+                            </TabContent>
                             <TabContent id='tabCreate'><h1>Incluir</h1></TabContent>
                             <TabContent id='tabUpdate'><h1>Alterar</h1></TabContent>
                             <TabContent id='tabDelete'><h1>Excluir</h1></TabContent>
@@ -46,6 +52,6 @@ class BillingCycle extends Component {
     }
 }
 
-const mapStateToProps = state => ({tab: state.tab})
-const mapDispatchToProps = dispatch => bindActionCreators({selectTab, showTabs}, dispatch)
+const mapStateToProps = state => ({tab: state.tab},{list: state.list})
+const mapDispatchToProps = dispatch => bindActionCreators({selectTab, showTabs, getList}, dispatch)
 export default connect(mapStateToProps,mapDispatchToProps)(BillingCycle)
