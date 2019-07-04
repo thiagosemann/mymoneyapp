@@ -13,7 +13,7 @@ import TabContent from '../common/tab/tabContent'
 import {selectTab, showTabs} from '../common/tab/tabActions'
 import {getList} from './billingCycleActions'
 
-import List from '../common/list/list'
+// import List from '../common/list/list'
 
 class BillingCycle extends Component {
     componentWillMount (){
@@ -38,7 +38,7 @@ class BillingCycle extends Component {
                         </TabsHeader>
                         <TabsContent>
                             <TabContent id='tabList'>
-                                <List/>
+                                {/* <List/> */}
                             </TabContent>
                             <TabContent id='tabCreate'><h1>Incluir</h1></TabContent>
                             <TabContent id='tabUpdate'><h1>Alterar</h1></TabContent>
