@@ -21,7 +21,7 @@ class BillingCycle extends Component {
     }
 
     render() {
-        const headList = ['Nome','Mês','Ano']
+        const headList = ['Nome','Mês','Ano','Ações']
         return (
             <div>
                 <ContentHeader title='Ciclos de Pagamento' small='Cadastro'/>
