@@ -9,16 +9,15 @@ import TabsContent from '../common/tab/tabsContent'
 import TabHeader from '../common/tab/tabHeader'
 import TabContent from '../common/tab/tabContent'
 import {selectTab, showTabs} from '../common/tab/tabActions'
-import {getList, create} from './billingCycleActions'
-import List from '../common/list/list'
-import FormRedux from '../common/formRedux/formRedux'
+import {create} from './billingCycleActions'
+import List from './billingCycleList'
+import Form from './billingCycleForm'
 
 class BillingCycle extends Component {
     componentWillMount (){
         const tabsToShow = ['tabList','tabCreate']
         this.props.selectTab(tabsToShow[0])             // Seleciona a tabList como Inicial
         this.props.showTabs(...tabsToShow)              // Seleciona as Tabs que serão exibidas
-        this.props.getList()
     }
 
     render() {
@@ -36,10 +35,10 @@ class BillingCycle extends Component {
                         </TabsHeader>
                         <TabsContent>
                             <TabContent id='tabList'>
-                               <List list={this.props.list} headList={headList}/>
+                               <List headList={headList}/>
                             </TabContent>
                             <TabContent id='tabCreate'>
-                                <FormRedux onSubmit={this.props.create}/>
+                                <Form onSubmit={this.props.create}/>
                             </TabContent>
                             <TabContent id='tabUpdate'><h1>Alterar</h1></TabContent>
                             <TabContent id='tabDelete'><h1>Excluir</h1></TabContent>
@@ -52,6 +51,5 @@ class BillingCycle extends Component {
     }
 }
 
-const mapStateToProps = state => ({tab: state.tab},{list: state.billingCycle.list})
-const mapDispatchToProps = dispatch => bindActionCreators({selectTab, showTabs, getList,create}, dispatch)
-export default connect(mapStateToProps,mapDispatchToProps)(BillingCycle)
+const mapDispatchToProps = dispatch => bindActionCreators({selectTab, showTabs,create}, dispatch)
+export default connect(null,mapDispatchToProps)(BillingCycle)

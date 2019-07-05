@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import {reduxForm, Field} from 'redux-form'
 
-class FormRedux extends Component{
+class BillingCycleForm extends Component{
     render() {
         const {handleSubmit} = this.props
         return(
@@ -21,4 +21,4 @@ class FormRedux extends Component{
     }
 }
 
-export default reduxForm({form:'formRedux'})(FormRedux)
+export default reduxForm({form:'billingCycleForm'})(BillingCycleForm)
