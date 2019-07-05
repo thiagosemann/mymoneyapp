@@ -3,17 +3,15 @@ import ContentHeader from '../common/template/contentHeader'
 import Content from '../common/template/content'
 import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux'
-
-
 import Tabs from '../common/tab/tabs'
 import TabsHeader from '../common/tab/tabsHeader'
 import TabsContent from '../common/tab/tabsContent'
 import TabHeader from '../common/tab/tabHeader'
 import TabContent from '../common/tab/tabContent'
 import {selectTab, showTabs} from '../common/tab/tabActions'
-import {getList} from './billingCycleActions'
-
-import BillingCycleList from './billingCycleList'
+import {getList, create} from './billingCycleActions'
+import List from '../common/list/list'
+import FormRedux from '../common/formRedux/formRedux'
 
 class BillingCycle extends Component {
     componentWillMount (){
@@ -24,6 +22,7 @@ class BillingCycle extends Component {
     }
 
     render() {
+        const headList = ['Nome','Mês','Ano']
         return (
             <div>
                 <ContentHeader title='Ciclos de Pagamento' small='Cadastro'/>
@@ -37,9 +36,11 @@ class BillingCycle extends Component {
                         </TabsHeader>
                         <TabsContent>
                             <TabContent id='tabList'>
-                               <BillingCycleList/>
+                               <List list={this.props.list} headList={headList}/>
                             </TabContent>
-                            <TabContent id='tabCreate'><h1>Incluir</h1></TabContent>
+                            <TabContent id='tabCreate'>
+                                <FormRedux onSubmit={this.props.create}/>
+                            </TabContent>
                             <TabContent id='tabUpdate'><h1>Alterar</h1></TabContent>
                             <TabContent id='tabDelete'><h1>Excluir</h1></TabContent>
                         </TabsContent>
@@ -51,6 +52,6 @@ class BillingCycle extends Component {
     }
 }
 
-const mapStateToProps = state => ({tab: state.tab},{list: state.list})
-const mapDispatchToProps = dispatch => bindActionCreators({selectTab, showTabs, getList}, dispatch)
+const mapStateToProps = state => ({tab: state.tab},{list: state.billingCycle.list})
+const mapDispatchToProps = dispatch => bindActionCreators({selectTab, showTabs, getList,create}, dispatch)
 export default connect(mapStateToProps,mapDispatchToProps)(BillingCycle)
