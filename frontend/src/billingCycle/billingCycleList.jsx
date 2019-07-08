@@ -29,7 +29,7 @@ class BillingCycle extends Component {
                 <th>{headList[0]}</th>
                 <th>{headList[1]}</th>
                 <th>{headList[2]}</th>
-                <th>{headList[3]}</th>
+                <th className='table-actions'>{headList[3]}</th>
             </tr>
            )
     }

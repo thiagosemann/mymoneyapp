@@ -14,9 +14,9 @@ class BillingCycleForm extends Component{
             case 'tabDelete':
                 return <button type='submit' className='btn btn-danger'>Excluir</button>
             case 'tabUpdate':
-                    return <button type='submit' className='btn btn-warning'>Alterar</button>
+                    return <button type='submit' className='btn btn-info'>Alterar</button>
             case 'tabCreate':
-                    return <button type='submit' className='btn btn-success'>Criar</button>                             
+                    return <button type='submit' className='btn btn-primary'>Criar</button>                             
             default:
                 <button type='submit' className='btn btn-success'>Criar</button>
         } 
