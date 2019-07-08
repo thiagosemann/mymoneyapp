@@ -19,9 +19,11 @@ export function getList() {
 export function create(values) {
     return submit(values,'post')
 }
+
 export function update(values) {
     return submit(values,'put')
 }
+
 export function remove(values) {
     return submit(values,'delete')
 }
@@ -39,9 +41,11 @@ function submit(values, method) {
         })
     }
 }
+
 function chooseTab(tabSelected){
     return[showTabs(tabSelected), selectTab(tabSelected)]
 }
+
 export function showDelete(billingCycle) {
     return [
         chooseTab('tabDelete'),
